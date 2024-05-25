@@ -55,6 +55,52 @@ class SumaMovimiento
             Console.WriteLine("S: Mover Abajo");
             Console.WriteLine("D: Mover Derecha");
             Console.WriteLine("Esc: Salir");
+
+            // LEER OPCOIN JUGADOR
+            ConsoleKeyInfo tecla = Console.ReadKey(true);
+
+            //PROCESAR OPCION JUGADOR
+            switch (tecla.Key)
+            {
+                case ConsoleKey.W:
+                    if (x > 0)
+                    {
+                        puntaje += tablero[x - 1, y];
+                        tablero[x - 1, y] = 0;
+                        x--;
+                    }
+                    break;
+                case ConsoleKey.A:
+                    if (y > 0)
+                    {
+                        puntaje += tablero[x, y - 1];
+                        tablero[x, y - 1] = 0;
+                        y--;
+                    }
+                    break;
+                case ConsoleKey.S:
+                    if (x < n - 1)
+                    {
+                        puntaje += tablero[x + 1, y];
+                        tablero[x + 1, y] = 0;
+                        x++;
+                    }
+                    break;
+                case ConsoleKey.D:
+                    if (y < n - 1)
+                    {
+                        puntaje += tablero[x, y + 1];
+                        tablero[x, y + 1] = 0;
+                        y++;
+                    }
+                    break;
+                case ConsoleKey.Escape:
+                    Console.WriteLine("¡Juego terminado!");
+                    Console.WriteLine("Puntaje final: " + puntaje);
+                    return;
+            }
+
+
         }
     }
 
